@@ -1,0 +1,37 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "[Report Name Here]"
+  author: "Rachel, Elaine, and Yuthi"
+  description: "[Description Here]"
+  keyword: data science, communicating, storytelling, data visualization
+  url: "https://github.com/yuthimreddy/aclr-design-final#"
+  sidebar: 
+    logo: logo.png
+    search: true
+  repo-url: ""
+  repo-branch: ""
+  image: logo.png
+
+
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      light: minty
+    code-fold: false
+    backgroundcolor: "#FFFFFF"
+  pdf:
+    documentclass: scrreprt
+
+
+
