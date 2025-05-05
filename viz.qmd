@@ -10,7 +10,7 @@ import seaborn as sns
 from matplotlib import font_manager
 ```
 
-```{python, echo = FALSE}
+```{python, echo=FALSE}
 # importing data as dataframe:
 df = pd.read_csv('aclr data(in).csv')
 
@@ -28,18 +28,17 @@ m_df = df.fillna(mean_values)
 df['sex_dashboard'] = df['sex_dashboard'].shift(-1)
 ```
 
-```{python, echo = FALSE}
+```{python, echo=FALSE}
 # == PLOT PREPARATION ==
 
 # data for graphing (getting rid of NaN values):
 df_clean = df[['ikdc', 'acl_rsi', 'sex_dashboard', 'tss_dashboard']].dropna()
-
-# Filter by sex
-df_male = df_clean[df_clean['sex_dashboard'] == 'Male']
-df_female = df_clean[df_clean['sex_dashboard'] == 'Female']
 ```
 
 ```{python}
+# Filter by sex
+df_male = df_clean[df_clean['sex_dashboard'] == 'Male']
+df_female = df_clean[df_clean['sex_dashboard'] == 'Female']
 # setting plot size:
 plt.figure(figsize=(10, 6))
 # male graph:
