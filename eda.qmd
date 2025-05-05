@@ -1,3 +1,224 @@
 # Exploratory Data Analysis
 
-insert eda
+
+```{python}
+# setting up environment
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+# importing data as dataframe:
+df = pd.read_csv('aclr data(in).csv')
+```
+
+```{python}
+# Including relevant variables into our dataframe and dropping the others:
+df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi', 'tegner_pre', 'tegner_now', 'lsi_ext_isok_60', 'lsi_flex_isok_60']]
+df.head()
+```
+
+```{python}
+# Filtering for numeric columns:
+numeric_columns = df.select_dtypes(include=['int', 'float']).columns
+# imputing missing values with the mean for each respective column
+mean_values = df[numeric_columns].mean()
+m_df = df.fillna(mean_values)
+print(m_df.head(5))
+```
+
+**5. Descriptive Statistics & Distributions**
+
+Provide summaries of important variables:
+
+```{python}
+# Summarizing categorical variables description stats:
+print('\nCategorical Variable Descriptions:')
+print('\n', df['sex_dashboard'].value_counts())
+print('\n', df['graft_dashboard2'].value_counts())
+print('\n', df['reinjury'].value_counts())
+print('\n', pd.crosstab(df['sex_dashboard'], df['graft_dashboard2']))
+```
+
+```{python}
+# Pairplot of filtered variables:
+sns.pairplot(df[['age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi', 'tegner_pre', 'tegner_now', 'lsi_ext_isok_60', 'lsi_flex_isok_60']], plot_kws={"s": 5})
+plt.title('Pairplot of Quantitative Variables')
+plt.show()
+```
+
+```{python}
+# Creating visualizations to illustrate distributions:
+
+
+# SCATTERPLOT: Between height and mass_kg
+plt.figure(figsize=(10,6))
+sns.scatterplot(x='height_m', y='mass_kg', data=df)
+# == SCAFFOLDING == 
+plt.suptitle('Scatterplot of Height and Mass', weight = 'bold', fontsize = 16, x = 0.29)
+# axis labels:
+plt.xlabel('Height', weight = 'bold')
+plt.ylabel('Mass (kg)', weight = 'bold')
+
+# removing spines
+plt.gca().spines['top'].set_visible(False)
+plt.gca().spines['right'].set_visible(False)
+plt.gca().spines['left'].set_visible(False)
+
+plt.show()
+
+
+# Histogram for 'age':
+plt.figure(figsize=(10,6))
+df['age'].plot(kind='hist')
+# == SCAFFOLDING == 
+plt.suptitle('Histogram of Age', weight = 'bold', fontsize=16, x=0.20)
+plt.title('Distribution of age values', fontsize=10, x=0.075)
+plt.subplots_adjust(top = 0.91) 
+
+# axis labels:
+plt.xlabel('Age', weight = 'bold')
+plt.ylabel('Count', weight = 'bold')
+# removing spines
+plt.gca().spines['top'].set_visible(False)
+plt.gca().spines['right'].set_visible(False)
+plt.gca().spines['left'].set_visible(False)
+
+plt.show()
+```
+
+**6.  Examine Correlations (if relevant)**
+
+Interpret findings: What variables appear related?
+
+```{python}
+# setting filtered_df to be the relevant columns:
+filtered_df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi', 'tegner_pre', 'tegner_now', 'lsi_ext_isok_60', 'lsi_flex_isok_60']]
+# dropping categorical columns:
+num_fil_df = filtered_df.drop(['sex_dashboard', 'graft_dashboard2', 'reinjury'], axis=1)
+# creating correlation matrix of our filtered numerical columns
+corr_matrix = num_fil_df.corr()
+
+# plotting correlation heatmap:
+plt.figure(figsize=(10,6))
+sns.heatmap(corr_matrix, fmt=".1f", annot=True, cmap="coolwarm", center=0)
+plt.title("Cleaned Dataframe: Correlation Heatmap",weight = 'bold', fontsize = 18, x=0.21)
+plt.show()
+```
+
+Positively correlated variables seem to include:
+- ikdc and acl_rsi
+- bmi and mass_kg
+- tegner_now and ikdc
+- tegner_now and acl_rsi
+
+Negatively correlated variables seem to include:
+- tegner_pre and age
+- tegner_now and age
+
+**7. Explore Relationships (if relevant)**
+
+Dig into potential causal or descriptive relationships 
+Use visualizations and statistical summaries.
+
+```{python}
+# Records were mismatched so we shifted row values by 1 
+# (for every graft_type recorded, reinjury was blank so shifted by 1 to match)
+df['reinjury_shifted'] = df['reinjury'].shift(-1)
+df_cleaned = df[df['graft_dashboard2'].notna()][['graft_dashboard2', 'reinjury_shifted']]
+df_cleaned.columns = ['graft_dashboard2', 'reinjury']
+print(df_cleaned.head()) # previewing cleaned dataset
+
+df_cleaned = df_cleaned[
+    (df_cleaned['reinjury'].str.upper() != 'BLANK') &
+    (df_cleaned['graft_dashboard2'].str.upper() != 'BLANK')]
+
+
+grouped_counts = (
+    df_cleaned.groupby(['graft_dashboard2', 'reinjury'])
+    .size()
+    .reset_index(name='count')
+)
+
+# #graft_order = ['HS allograft', 'BTB allograft', 'QT autograft', 'Allograft', 'Other']
+# # Convert 'graft_dashboard2' to a categorical type w order
+# #grouped_counts['graft_dashboard2'] = pd.Categorical(
+#     grouped_counts['graft_dashboard2'],
+#     categories=graft_order,
+#     ordered=True
+# )
+# sort the DataFrame by this order for plotting
+#grouped_counts = grouped_counts.sort_values('graft_dashboard2')
+
+
+# plotting stacked bar chart:
+plt.figure(figsize=(10, 6))
+sns.barplot(
+    data=grouped_counts,
+    x='graft_dashboard2',
+    y='count',
+    hue='reinjury',
+    palette='Set2'
+)
+# == SCAFFOLDING == 
+plt.xlabel('Graft Type')
+plt.ylabel('Count', weight = 'bold')
+plt.title('Reinjury Types by Graft Type', weight = 'bold', fontsize = 16, x = 0.2)
+plt.legend(title='Reinjury Type')
+# removing spines
+plt.gca().spines['top'].set_visible(False)
+plt.gca().spines['right'].set_visible(False)
+plt.gca().spines['left'].set_visible(False)
+
+plt.tight_layout()
+plt.show()
+```
+
+HS Autograft has the highest proportion of no reinjuries, while the BTB autograft seems to have the highest recorded count of Contralateral reinjuries.
+
+```{python}
+# Bar Chart: Focusing on Tegner as a metric since it assesses overall functionality
+
+# calculating mean and std for both Tegner values:
+mean_val = [filtered_df['tegner_pre'].mean(), filtered_df['tegner_now'].mean()]
+std_val = [filtered_df['tegner_pre'].std(), filtered_df['tegner_now'].std()]
+
+# == PLOTTING ==
+plt.figure(figsize=(10,6))
+plt.bar(['Pre', 'Now'], mean_val, yerr=std_val, capsize=5, color=['#7aa095', '#bf8b85'], alpha=0.6)
+
+# SCAFFOLDING:
+plt.suptitle('Tegner Performance Decreases after ACL Reconstruction ', weight='bold', fontsize=16, x = 0.46)
+plt.title('Comparing Tegner scores before surgery to scores recorded post-surgery', fontsize=12, x = 0.36)
+
+plt.subplots_adjust(top = 0.90) # adjusting space between the super title and the title
+plt.ylabel('Tegner Score', weight='bold')
+plt.xlabel('Pre vs. Now', weight='bold')
+
+# removing spines
+plt.gca().spines['top'].set_visible(False)
+plt.gca().spines['right'].set_visible(False)
+plt.gca().spines['left'].set_visible(False)
+plt.show()
+```
+
+```{python}
+# Creating a violin plot to compare the tegner_pre and tegner_now by age:
+
+# PLOT
+plt.figure(figsize=(12, 6))
+sns.violinplot(data=filtered_df[['tegner_pre', 'tegner_now']], inner='quartile')
+
+# SCAFFOLDING:
+plt.suptitle('Tegner Scores are Lower After ACL Reconstruction', weight='bold', fontsize=16, x = 0.365)
+plt.title('Comparing values from the pre_tegner to the current tegner values', fontsize=12, x = 0.27)
+
+plt.subplots_adjust(top = 0.90) # adjusting space between the super title and the title
+plt.ylabel('Tegner Score', weight='bold')
+plt.xlabel('Pre vs. Now', weight='bold')
+
+plt.gca().spines['top'].set_visible(False)
+plt.gca().spines['right'].set_visible(False)
+plt.gca().spines['left'].set_visible(False)
+plt.show()
+```
+
