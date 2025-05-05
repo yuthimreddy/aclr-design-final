@@ -18,11 +18,12 @@ book:
 
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    - cleaning.qmd
+    - eda.qmd
+    - viz.qmd
+    - dict.qmd
 
-bibliography: references.bib
+# bibliography: references.bib
 
 format:
   html:
