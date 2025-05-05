@@ -1,7 +1,7 @@
 # Exploratory Data Analysis
 
-
-```{python}
+Preview of the cleaned dataset (first five rows)
+```{python, echo=FALSE}
 # setting up environment
 import pandas as pd
 import numpy as np
@@ -9,47 +9,32 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 # importing data as dataframe:
 df = pd.read_csv('aclr data(in).csv')
-```
-
-```{python}
 # Including relevant variables into our dataframe and dropping the others:
 df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi', 'tegner_pre', 'tegner_now', 'lsi_ext_isok_60', 'lsi_flex_isok_60']]
 df.head()
 ```
 
-```{python}
+```{python, echo=FALSE}
 # Filtering for numeric columns:
 numeric_columns = df.select_dtypes(include=['int', 'float']).columns
 # imputing missing values with the mean for each respective column
 mean_values = df[numeric_columns].mean()
 m_df = df.fillna(mean_values)
-print(m_df.head(5))
 ```
 
-**5. Descriptive Statistics & Distributions**
+**Pairplot of our chosen variables**
 
-Provide summaries of important variables:
-
-```{python}
-# Summarizing categorical variables description stats:
-print('\nCategorical Variable Descriptions:')
-print('\n', df['sex_dashboard'].value_counts())
-print('\n', df['graft_dashboard2'].value_counts())
-print('\n', df['reinjury'].value_counts())
-print('\n', pd.crosstab(df['sex_dashboard'], df['graft_dashboard2']))
-```
-
-```{python}
+```{python, echo=FALSE}
 # Pairplot of filtered variables:
-sns.pairplot(df[['age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi', 'tegner_pre', 'tegner_now', 'lsi_ext_isok_60', 'lsi_flex_isok_60']], plot_kws={"s": 5})
+sns.pairplot(df[['age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi']], plot_kws={"s": 5})
 plt.title('Pairplot of Quantitative Variables')
 plt.show()
 ```
+This pairplot illustrates the relationship between each pair of variables in our dataset. This is a quick and straightforward tool to see if there are any obvious correlations/clusters between different elements. We can see that BMI and mass have the most postively correlated relationship, which is to be expected (since mass is used to calculate BMI). Other than that, there are no glaringly obvious trends between variables. 
 
+**Looking at Specific Distributions**
 ```{python}
 # Creating visualizations to illustrate distributions:
-
-
 # SCATTERPLOT: Between height and mass_kg
 plt.figure(figsize=(10,6))
 sns.scatterplot(x='height_m', y='mass_kg', data=df)
