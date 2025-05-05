@@ -1,3 +1,20 @@
 # Data Dictionary
 
-insert dictionary
+Here are the relevant variables we used to complete our analysis with their meanings. 
+
+
+| Variable               | Description                                                             |
+|------------------------|-------------------------------------------------------------------------|
+| acl_rsi                | The return-to-sport-after-injury score is self-reported by the patient. |
+| age                    | The age at which the patient received surgery.                          |
+| bmi                    | Body mass index of the patient.                                         |
+| graft_dashboard2       | The types of grafts used in surgery are allograft, QT autograft,        
+|                        | HS autograft, BTB autograft, and others.                                |
+| height_m               | The height of the patient in meters.                                    |  
+| ikdc                   | A patient-reported outcome measure used to assess knee function and 
+|                        | symptoms.                                                               |
+| mass_kg                | The weight of the patient in kilograms.                                 |
+| reinjury               | The different types of reinjuries: contralateral, ipsilateral, and both.|
+| sex_dashboard          | The gender of the patient: male or female.                              |
+| tss_dashboard          | Categorizes the months post-surgery into subsets.                       |
+|------------------------|-------------------------------------------------------------------------|
