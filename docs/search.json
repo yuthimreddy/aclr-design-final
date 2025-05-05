@@ -2,11 +2,11 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "[Report Name Here]",
+    "title": "ACLR Final Project",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "text": "Report\n\nAudience:\nOur final report’s audience/stakeholders include physicians and other researchers evaluating the health of patients who have undergone ACL reconstruction surgery.\n\n\nProblem Statement:\nAfter athletes tear their anterior cruciate ligament (ACL), many undergo ACL reconstruction (ACLR) surgery. However, physicians and other researchers are still evaluating the recovery and health of patients who have undergone ACLR. It is important to note that a majority of patients do not get reinjured - in this study, 83% had no reinjuries after ACLR surgery. There are many features that can affect reinjury rates after the surgery, such as the gender of the patient, the graft type used, and even their mental readiness. Specifically, our stakeholders are interested in all of these factors and what combination will lead to the lowest reinjury rates in patients after ACLR surgery is performed.\n\n\nAnalysis:\n[insert graph analyses]\n\n\nConclusion:\n[insert conclusion]",
     "crumbs": [
-      "Preface"
+      "Report"
     ]
   },
   {
