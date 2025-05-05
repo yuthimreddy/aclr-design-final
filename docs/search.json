@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "ACLR Final Project",
     "section": "",
-    "text": "Report\n\nAudience:\nOur final report’s audience/stakeholders include physicians and other researchers evaluating the health of patients who have undergone ACL reconstruction surgery.\n\n\nProblem Statement:\nAfter athletes tear their anterior cruciate ligament (ACL), many undergo ACL reconstruction (ACLR) surgery. However, physicians and other researchers are still evaluating the recovery and health of patients who have undergone ACLR. It is important to note that a majority of patients do not get reinjured - in this study, 83% had no reinjuries after ACLR surgery. There are many features that can affect reinjury rates after the surgery, such as the gender of the patient, the graft type used, and even their mental readiness. Specifically, our stakeholders are interested in all of these factors and what combination will lead to the lowest reinjury rates in patients after ACLR surgery is performed.\n\n\nAnalysis:\n[insert graph analyses]\n\n\nConclusion:\n[insert conclusion]",
+    "text": "Report\n\nAudience\n\nOur final report’s audience/stakeholders include physicians and other researchers evaluating the health of patients who have undergone ACL reconstruction surgery.\n\n\nProblem Statement\n\nAfter athletes tear their anterior cruciate ligament (ACL), many undergo ACL reconstruction (ACLR) surgery. However, physicians and other researchers are still evaluating the recovery and health of patients who have undergone ACLR. It is important to note that a majority of patients do not get reinjured - in this study, 83% had no reinjuries after ACLR surgery. There are many features that can affect reinjury rates after the surgery, such as the gender of the patient, the graft type used, and even their mental readiness. Specifically, our stakeholders are interested in all of these factors and what combination will lead to the lowest reinjury rates in patients after ACLR surgery is performed.\n\n\nAnalysis\n\n[insert graph analyses]\n\n\nConclusion\n\n[insert conclusion]",
     "crumbs": [
       "Report"
     ]
@@ -44,7 +44,7 @@
     "href": "dict.html",
     "title": "4  Data Dictionary",
     "section": "",
-    "text": "insert dictionary",
+    "text": "Here are the relevant variables we used to complete our analysis with their meanings.\n\n\n\n\n\n\n\nVariable\nDescription\n\n\n\n\nacl_rsi\nThe return-to-sport-after-injury score is self-reported by the patient.\n\n\nage\nThe age at which the patient received surgery.\n\n\nbmi\nBody mass index of the patient.\n\n\ngraft_dashboard2\nThe types of grafts used in surgery are allograft, QT autograft,\n\n\n\nHS autograft, BTB autograft, and others.\n\n\nheight_m\nThe height of the patient in meters.\n\n\nikdc\nA patient-reported outcome measure used to assess knee function and\n\n\n\nsymptoms.\n\n\nmass_kg\nThe weight of the patient in kilograms.\n\n\nreinjury\nThe different types of reinjuries: contralateral, ipsilateral, and both.\n\n\nsex_dashboard\nThe gender of the patient: male or female.\n\n\ntss_dashboard\nCategorizes the months post-surgery into subsets.\n\n\n————————\n————————————————————————-",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Dictionary</span>"
     ]
