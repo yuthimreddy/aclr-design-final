@@ -28,9 +28,7 @@ book:
 format:
   html:
     theme:
-      light: 
-      - minty
-      - custom-fonts.scss
+      light: minty
     code-fold: false
     backgroundcolor: "#FFFFFF"
   pdf:
