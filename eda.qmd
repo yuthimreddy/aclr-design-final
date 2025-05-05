@@ -68,6 +68,7 @@ plt.gca().spines['right'].set_visible(False)
 plt.gca().spines['left'].set_visible(False)
 plt.show()
 ```
+This is 
 
 **6.  Examine Correlations (if relevant)**
 
@@ -75,7 +76,7 @@ Interpret findings: What variables appear related?
 
 ```{python}
 # setting filtered_df to be the relevant columns:
-filtered_df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi', 'tegner_pre', 'tegner_now', 'lsi_ext_isok_60', 'lsi_flex_isok_60']]
+filtered_df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi']]
 # dropping categorical columns:
 num_fil_df = filtered_df.drop(['sex_dashboard', 'graft_dashboard2', 'reinjury'], axis=1)
 # creating correlation matrix of our filtered numerical columns
@@ -91,12 +92,7 @@ plt.show()
 Positively correlated variables seem to include:
 - ikdc and acl_rsi
 - bmi and mass_kg
-- tegner_now and ikdc
-- tegner_now and acl_rsi
 
-Negatively correlated variables seem to include:
-- tegner_pre and age
-- tegner_now and age
 
 **7. Explore Relationships (if relevant)**
 
