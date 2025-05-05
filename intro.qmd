@@ -1,0 +1,7 @@
+# Introduction
+
+After athletes tear their anterior cruciate ligament (ACL),many undergo ACL reconstruction (ACLR) surgery. However, physicians and other
+researchers are still evaluating the recovery and health of patients who have undergone ACLR. It is important to note that a majority of 
+patients do not get reinjured - in this study, 83% had no reinjuries after ACLR surgery. There are many features that can affect reinjury 
+rates after the surgery, such as the gender of the patient, the graft type used, and even their mental readiness. Our stakeholders are 
+interested in all of these factors and what specific combination will lead to the lowest reinjury rates in patients after ACLR surgery is performed. 

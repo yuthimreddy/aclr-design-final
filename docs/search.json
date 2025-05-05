@@ -14,7 +14,11 @@
     "href": "cleaning.html",
     "title": "1  Data Cleaning",
     "section": "",
+<<<<<<< HEAD
     "text": "insert cleaning",
+=======
+    "text": "After athletes tear their anterior cruciate ligament (ACL),many undergo ACL reconstruction (ACLR) surgery. However, physicians and other researchers are still evaluating the recovery and health of patients who have undergone ACLR. It is important to note that a majority of patients do not get reinjured - in this study, 83% had no reinjuries after ACLR surgery. There are many features that can affect reinjury rates after the surgery, such as the gender of the patient, the graft type used, and even their mental readiness. Our stakeholders are interested in all of these factors and what specific combination will lead to the lowest reinjury rates in patients after ACLR surgery is performed.",
+>>>>>>> fad6bd555d1981fed88ba8a3b5bd10bc69fd85ad
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Data Cleaning</span>"
     ]
@@ -28,6 +32,7 @@
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Visualizations</span>"
     ]
+<<<<<<< HEAD
   },
   {
     "objectID": "dict.html",
@@ -38,5 +43,7 @@
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Dictionary</span>"
     ]
+=======
+>>>>>>> fad6bd555d1981fed88ba8a3b5bd10bc69fd85ad
   }
 ]
