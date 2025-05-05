@@ -1,22 +1,26 @@
-### Data Cleaning
+## Data Cleaning
 
-#### Choosing our Variables:
+#### **Choosing our Variables:**
 
 With the given dataset, we decided to focus on the variables we deemed to be most relevant to our hypothesis regarding recovery
 trends. Categorical variables such as `sex_dashboard`, `graft_dashboard2`, `reinjury`, and `tss_dashboard` were inlcuded along with 
 numerical values such as `age`, `ikdc`, `acl_rsi`, and `bmi`. 
 
-Our categorical variables provide key insight into grouping individuals and focuisng on patterns relevant to them, as well as stratifying
-the outcomes. For example, `sex_dashboard` allowed us to explore sex-based differences in recovery. Both `graft_dashboard2` and `reinjury`
-helped us determine whether certain graft types experiences reinjury more frequent with `tss_dashboard` establishing the time frame as to when
+Our categorical variables provide key insight into grouping individuals and focusing on patterns relevant to them, as well as stratifying
+their respective outcomes. For example, `sex_dashboard` allowed us to explore sex-based differences in recovery. Both `graft_dashboard2` and `reinjury`
+helped us determine whether certain graft types experience reinjury more frequent with `tss_dashboard` establishing the time frame as to when
 individuals experienced their reinjury.
 
-The numerical variables chosen are all continuous measures of both physical and psychocological recovery factors that are key to affirming and
+The numerical variables chosen are all continuous measures of both physical and psychological recovery factors that are key to affirming and
 establishing key numerical general descriptive statistics that provide a measure of evaluating outcome differences.
 
-#### Cleaning Approach:
+#### **Cleaning Approach:**
 
 During our analysis, we took measures to address missing values, inconsistent data types, and outliers. For 
 
 For each variable, we assessed the proportion of missing values respective to the amount of osbservations. For our numerical columns, we decided to 
-impute the missing values with the median, and for our categorical values decided to drop the records entierly 
+impute the missing values with the median, and for our categorical values decided to drop records entirely so that we could plot points accordingly 
+when constructing our graphs and visualizations. 
+
+After completing our intial cleaning process, we went ahead with our next step, Exploratory Data Analysis (EDA), to examine any relations and patterns within 
+our dataset.

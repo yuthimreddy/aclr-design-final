@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="4afa68db" class="cell" data-execution_count="1">
+<div id="eb5d5cde" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setting up environment</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># importing data as dataframe:</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'aclr data(in).csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9702d7d1" class="cell" data-execution_count="2">
+<div id="4ed8ec76" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Including relevant variables into our dataframe and dropping the others:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[[<span class="st">'sex_dashboard'</span>, <span class="st">'graft_dashboard2'</span>, <span class="st">'reinjury'</span>, <span class="st">'age'</span>, <span class="st">'height_m'</span>, <span class="st">'mass_kg'</span>, <span class="st">'bmi'</span>, <span class="st">'ikdc'</span>, <span class="st">'acl_rsi'</span>, <span class="st">'tegner_pre'</span>, <span class="st">'tegner_now'</span>, <span class="st">'lsi_ext_isok_60'</span>, <span class="st">'lsi_flex_isok_60'</span>]]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -332,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="334bd503" class="cell" data-execution_count="3">
+<div id="43d43692" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering for numeric columns:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>numeric_columns <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'int'</span>, <span class="st">'float'</span>]).columns</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># imputing missing values with the mean for each respective column</span></span>
@@ -364,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>5. Descriptive Statistics &amp; Distributions</strong></p>
 <p>Provide summaries of important variables:</p>
-<div id="3ba7286b" class="cell" data-execution_count="4">
+<div id="79ec9332" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarizing categorical variables description stats:</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Categorical Variable Descriptions:'</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>, df[<span class="st">'sex_dashboard'</span>].value_counts())</span>
@@ -404,7 +404,7 @@ Male                     83            757           513    574           396
 Not Reported              0              2             1     12             0</code></pre>
 </div>
 </div>
-<div id="c43f4b2d" class="cell" data-execution_count="5">
+<div id="ff69be61" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairplot of filtered variables:</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(df[[<span class="st">'age'</span>, <span class="st">'height_m'</span>, <span class="st">'mass_kg'</span>, <span class="st">'bmi'</span>, <span class="st">'ikdc'</span>, <span class="st">'acl_rsi'</span>, <span class="st">'tegner_pre'</span>, <span class="st">'tegner_now'</span>, <span class="st">'lsi_ext_isok_60'</span>, <span class="st">'lsi_flex_isok_60'</span>]], plot_kws<span class="op">=</span>{<span class="st">"s"</span>: <span class="dv">5</span>})</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Pairplot of Quantitative Variables'</span>)</span>
@@ -417,7 +417,7 @@ Not Reported              0              2             1     12             0</c
 </div>
 </div>
 </div>
-<div id="d1a497be" class="cell" data-execution_count="6">
+<div id="277798d5" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating visualizations to illustrate distributions:</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -472,7 +472,7 @@ Not Reported              0              2             1     12             0</c
 </div>
 <p><strong>6. Examine Correlations (if relevant)</strong></p>
 <p>Interpret findings: What variables appear related?</p>
-<div id="1f37335c" class="cell" data-execution_count="7">
+<div id="e28fbed8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setting filtered_df to be the relevant columns:</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> df[[<span class="st">'sex_dashboard'</span>, <span class="st">'graft_dashboard2'</span>, <span class="st">'reinjury'</span>, <span class="st">'age'</span>, <span class="st">'height_m'</span>, <span class="st">'mass_kg'</span>, <span class="st">'bmi'</span>, <span class="st">'ikdc'</span>, <span class="st">'acl_rsi'</span>, <span class="st">'tegner_pre'</span>, <span class="st">'tegner_now'</span>, <span class="st">'lsi_ext_isok_60'</span>, <span class="st">'lsi_flex_isok_60'</span>]]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dropping categorical columns:</span></span>
@@ -497,7 +497,7 @@ Not Reported              0              2             1     12             0</c
 <p>Negatively correlated variables seem to include: - tegner_pre and age - tegner_now and age</p>
 <p><strong>7. Explore Relationships (if relevant)</strong></p>
 <p>Dig into potential causal or descriptive relationships Use visualizations and statistical summaries.</p>
-<div id="63999f5e" class="cell" data-execution_count="8">
+<div id="8dea8b7f" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Records were mismatched so we shifted row values by 1 </span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (for every graft_type recorded, reinjury was blank so shifted by 1 to match)</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'reinjury_shifted'</span>] <span class="op">=</span> df[<span class="st">'reinjury'</span>].shift(<span class="op">-</span><span class="dv">1</span>)</span>
@@ -565,7 +565,7 @@ Not Reported              0              2             1     12             0</c
 </div>
 </div>
 <p>HS Autograft has the highest proportion of no reinjuries, while the BTB autograft seems to have the highest recorded count of Contralateral reinjuries.</p>
-<div id="8eb5d144" class="cell" data-execution_count="9">
+<div id="91974468" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar Chart: Focusing on Tegner as a metric since it assesses overall functionality</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># calculating mean and std for both Tegner values:</span></span>
@@ -597,7 +597,7 @@ Not Reported              0              2             1     12             0</c
 </div>
 </div>
 </div>
-<div id="f9117961" class="cell" data-execution_count="10">
+<div id="3ebbd6f1" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a violin plot to compare the tegner_pre and tegner_now by age:</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># PLOT</span></span>
