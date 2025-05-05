@@ -3,9 +3,9 @@ project:
   output-dir: docs
 
 book:
-  title: "[Report Name Here]"
+  title: "ACLR Final Project"
   author: "Rachel, Elaine, and Yuthi"
-  description: "[Description Here]"
+  description: "DS 2023 Final Report"
   keyword: data science, communicating, storytelling, data visualization
   url: "https://github.com/yuthimreddy/aclr-design-final#"
   sidebar: 
