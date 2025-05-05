@@ -14,36 +14,39 @@
     "href": "cleaning.html",
     "title": "1  Data Cleaning",
     "section": "",
-<<<<<<< HEAD
     "text": "insert cleaning",
-=======
-    "text": "After athletes tear their anterior cruciate ligament (ACL),many undergo ACL reconstruction (ACLR) surgery. However, physicians and other researchers are still evaluating the recovery and health of patients who have undergone ACLR. It is important to note that a majority of patients do not get reinjured - in this study, 83% had no reinjuries after ACLR surgery. There are many features that can affect reinjury rates after the surgery, such as the gender of the patient, the graft type used, and even their mental readiness. Our stakeholders are interested in all of these factors and what specific combination will lead to the lowest reinjury rates in patients after ACLR surgery is performed.",
->>>>>>> fad6bd555d1981fed88ba8a3b5bd10bc69fd85ad
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Data Cleaning</span>"
     ]
   },
   {
+    "objectID": "eda.html",
+    "href": "eda.html",
+    "title": "2  Exploratory Data Analysis",
+    "section": "",
+    "text": "insert eda",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Exploratory Data Analysis</span>"
+    ]
+  },
+  {
     "objectID": "viz.html",
     "href": "viz.html",
-    "title": "2  Data Visualizations",
+    "title": "3  Data Visualization",
     "section": "",
     "text": "insert visualizations",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Visualizations</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Visualization</span>"
     ]
-<<<<<<< HEAD
   },
   {
     "objectID": "dict.html",
     "href": "dict.html",
-    "title": "3  Data Dictionary",
+    "title": "4  Data Dictionary",
     "section": "",
     "text": "insert dictionary",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Dictionary</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Dictionary</span>"
     ]
-=======
->>>>>>> fad6bd555d1981fed88ba8a3b5bd10bc69fd85ad
   }
 ]

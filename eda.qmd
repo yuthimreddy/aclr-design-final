@@ -1,4 +1,3 @@
-# References {.unnumbered}
+# Exploratory Data Analysis
 
-::: {#refs}
-:::
+insert eda
