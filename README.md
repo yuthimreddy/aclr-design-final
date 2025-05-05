@@ -1,1 +1,3 @@
-# aclr-design-final
+# Aclr Design Final: README
+
+Throughout this project, we reviewed data collected for a study regarding different variables that contribute to factors relevant to ACLR surgery. We analyzed the data to determine any correlations and then further explored potential relationships through examination of descriptive statistics and brief visualizations illustrating connections. Once we determined relations, we proceeded to build our narrative by creating appropriate and visually enticing graphs to present our data and connect our findings to our original hypothesis. The ability to breakdown a dataset, discover the patterns that lie within, and present those findings, are skills which encompass the job of a data scientist.
