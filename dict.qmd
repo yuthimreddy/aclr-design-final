@@ -17,4 +17,3 @@ Here are the relevant variables we used to complete our analysis with their mean
 | reinjury               | The different types of reinjuries: contralateral, ipsilateral, and both.|
 | sex_dashboard          | The gender of the patient: male or female.                              |
 | tss_dashboard          | Categorizes the months post-surgery into subsets.                       |
-|------------------------|-------------------------------------------------------------------------|
