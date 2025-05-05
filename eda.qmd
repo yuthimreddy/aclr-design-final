@@ -33,7 +33,7 @@ plt.show()
 This pairplot illustrates the relationship between each pair of variables in our dataset. This is a quick and straightforward tool to see if there are any obvious correlations/clusters between different elements. We can see that BMI and mass have the most postively correlated relationship, which is to be expected (since mass is used to calculate BMI). Other than that, there are no glaringly obvious trends between variables. 
 
 **Looking at Specific Distributions**
-```{python}
+```{python, echo=FALSE}
 # Creating visualizations to illustrate distributions:
 # SCATTERPLOT: Between height and mass_kg
 plt.figure(figsize=(10,6))
@@ -41,17 +41,17 @@ sns.scatterplot(x='height_m', y='mass_kg', data=df)
 # == SCAFFOLDING == 
 plt.suptitle('Scatterplot of Height and Mass', weight = 'bold', fontsize = 16, x = 0.29)
 # axis labels:
-plt.xlabel('Height', weight = 'bold')
+plt.xlabel('Height (m)', weight = 'bold')
 plt.ylabel('Mass (kg)', weight = 'bold')
-
 # removing spines
 plt.gca().spines['top'].set_visible(False)
 plt.gca().spines['right'].set_visible(False)
 plt.gca().spines['left'].set_visible(False)
-
 plt.show()
+```
+This is a scatterplot that plots the distribution of height v mass between all the patients. There is a pretty positive correlation between the two variables, since as height increases, mass also tends to increase. There is one outlier where height is around 3.25 meters, or around 10 feet. This is most likely a typo and they intended to mark it as 1.25. 
 
-
+```{python, echo=FALSE}
 # Histogram for 'age':
 plt.figure(figsize=(10,6))
 df['age'].plot(kind='hist')
@@ -59,7 +59,6 @@ df['age'].plot(kind='hist')
 plt.suptitle('Histogram of Age', weight = 'bold', fontsize=16, x=0.20)
 plt.title('Distribution of age values', fontsize=10, x=0.075)
 plt.subplots_adjust(top = 0.91) 
-
 # axis labels:
 plt.xlabel('Age', weight = 'bold')
 plt.ylabel('Count', weight = 'bold')
@@ -67,7 +66,6 @@ plt.ylabel('Count', weight = 'bold')
 plt.gca().spines['top'].set_visible(False)
 plt.gca().spines['right'].set_visible(False)
 plt.gca().spines['left'].set_visible(False)
-
 plt.show()
 ```
 
