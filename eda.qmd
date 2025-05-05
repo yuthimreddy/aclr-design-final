@@ -22,7 +22,7 @@ mean_values = df[numeric_columns].mean()
 m_df = df.fillna(mean_values)
 ```
 
-**Pairplot of our chosen variables**
+### Pairplot of our chosen variables
 
 ```{python, echo=FALSE}
 # Pairplot of filtered variables:
