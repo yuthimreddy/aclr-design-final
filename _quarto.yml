@@ -24,12 +24,13 @@ book:
     - viz.qmd
     - dict.qmd
 
-# bibliography: references.bib
 
 format:
   html:
     theme:
-      light: minty
+      light: 
+      - minty
+      - custom-fonts.scss
     code-fold: false
     backgroundcolor: "#FFFFFF"
   pdf:

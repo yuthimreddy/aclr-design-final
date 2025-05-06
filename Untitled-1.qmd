@@ -1,6 +1,0 @@
----
-title: "index.qmd"
-format: html
-jupyter: python3
----
-
