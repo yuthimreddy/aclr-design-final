@@ -166,7 +166,7 @@ plt.xlabel('Graft Type')
 plt.ylabel('Proportion of Reinjury Type')
 plt.title('Undergoing ACLR Surgery? Consider a Hamstring (HS) Tendon Autograft', fontsize=14, weight='bold', loc='left')  # Main title
 plt.text(0.01, 0.98, 'Comparing Proportions of Reinjury Types Across Different Graft Types', 
-         ha='left', va='center', transform=plt.gca().transAxes, fontsize=10, color='gray')  # Subtitle
+         ha='left', va='center', transform=plt.gca().transAxes, fontsize=12, color='#585757')  # Subtitle
 plt.legend(title='Reinjury Type', loc='upper left', bbox_to_anchor=(0.775, 1.0))
 plt.text(-0.8, -0.02, 'Source: UVA Department of Kinesiology and School of Data Science', ha='left', fontsize=10)
 sns.despine(top=True, right=True, left=True) #get rid of axes
