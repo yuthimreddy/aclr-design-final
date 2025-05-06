@@ -8,7 +8,7 @@
 
 <meta name="description" content="DS 2023 Final Report">
 
-<title>1&nbsp; Data Cleaning – ACLR Final Project</title>
+<title>1&nbsp; Data Cleaning Outline: – ACLR Final Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5e27f40d5dce24751e10f712defb2ea3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2fcc2c0438d613e8d57ba5943fd6dc95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cleaning.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Cleaning</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cleaning.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Cleaning Outline:</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cleaning.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Cleaning Outline:</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -192,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Cleaning</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Cleaning Outline:</span></h1>
 </div>
 
 
@@ -209,20 +209,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<section id="choosing-our-variables" class="level4" data-number="1.0.0.1">
-<h4 data-number="1.0.0.1" class="anchored" data-anchor-id="choosing-our-variables"><span class="header-section-number">1.0.0.1</span> <strong>Choosing our Variables:</strong></h4>
-<p>With the given dataset, we decided to focus on the variables we deemed to be most relevant to our hypothesis regarding recovery trends. Categorical variables such as <code>sex_dashboard</code>, <code>graft_dashboard2</code>, <code>reinjury</code>, and <code>tss_dashboard</code> were inlcuded along with numerical values such as <code>age</code>, <code>ikdc</code>, <code>acl_rsi</code>, and <code>bmi</code>.</p>
-<p>Our categorical variables provide key insight into grouping individuals and focusing on patterns relevant to them, as well as stratifying their respective outcomes. For example, <code>sex_dashboard</code> allowed us to explore sex-based differences in recovery. Both <code>graft_dashboard2</code> and <code>reinjury</code> helped us determine whether certain graft types experience reinjury more frequent with <code>tss_dashboard</code> establishing the time frame as to when individuals experienced their reinjury.</p>
-<p>The numerical variables chosen are all continuous measures of both physical and psychological recovery factors that are key to affirming and establishing key numerical general descriptive statistics that provide a measure of evaluating outcome differences.</p>
-</section>
-<section id="cleaning-approach" class="level4" data-number="1.0.0.2">
-<h4 data-number="1.0.0.2" class="anchored" data-anchor-id="cleaning-approach"><span class="header-section-number">1.0.0.2</span> <strong>Cleaning Approach:</strong></h4>
-<p>During our analysis, we took measures to address missing values, inconsistent data types, and outliers. For</p>
-<p>For each variable, we assessed the proportion of missing values respective to the amount of osbservations. For our numerical columns, we decided to impute the missing values with the median, and for our categorical values decided to drop records entirely so that we could plot points accordingly when constructing our graphs and visualizations.</p>
-<p>After completing our intial cleaning process, we went ahead with our next step, Exploratory Data Analysis (EDA), to examine any relations and patterns within our dataset. ======= ## Data Cleaning Outline: <strong><em>Documentation for our data cleaning process, including decisions regarding how we handle missing values, outliers, and other data quality issues.</em></strong></p>
+<p><strong><em>Documentation for our data cleaning process, including decisions regarding how we handle missing values, outliers, and other data quality issues.</em></strong></p>
 <p>First, we import the necessary libraries and set the dataset which is a .csv file provided by the UVA School of Data Science and the UVA Department of Kinesiology as a pandas dataframe.</p>
-<div id="30128f94" class="cell" data-execution_count="1">
+<div id="e4e1a0f1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting up our environment, importing all necessary libraries:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -232,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing dataset as dataframe:</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'aclr data(in).csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8e5958f5" class="cell" data-execution_count="2">
+<div id="b4f4e8f5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Previewing the dataframe:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -394,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="efb78fd7" class="cell" data-execution_count="3">
+<div id="9300c147" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the dimensions of the dataframe:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -402,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The original dataframe has 11150 observations and 63 columns. We will be focusing on the variables we feel are most relevant to our hypothesis. We will be using the columns: <code>sex_dashboard</code>, <code>graft_dashboard2</code>, <code>reinjury</code>, <code>age</code>, <code>height_m</code>, <code>mass_kg</code>, <code>bmi</code>, <code>ikdc</code>, <code>acl_rsi</code> and dropping the rest from the dataframe.</p>
-<div id="f6ee76c5" class="cell" data-execution_count="4">
+<div id="5d099b89" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[[<span class="st">'sex_dashboard'</span>, <span class="st">'graft_dashboard2'</span>, <span class="st">'reinjury'</span>, <span class="st">'age'</span>, <span class="st">'height_m'</span>, <span class="st">'mass_kg'</span>, <span class="st">'bmi'</span>, <span class="st">'ikdc'</span>, <span class="st">'acl_rsi'</span>, <span class="st">'tss_dashboard'</span>]]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -499,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><br>
 Now that we have our columns of interest, we will first check for missing values across the dataset. We will use the <code>isnull()</code> method to check for missing values and the <code>sum()</code> method to get the total number of missing values in each column, as well as the percentage of missing values in each column.</p>
-<div id="6fe103f4" class="cell" data-execution_count="5">
+<div id="19a68dad" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking for missing values:</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>missing_values <span class="op">=</span> df.isnull().<span class="bu">sum</span>()</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -526,7 +515,7 @@ tss_dashboard               5913   53.031390</code></pre>
 </div>
 <p><br>
 Now we will proceed by separating the variables into categorical and continuous variables. We will use the <code>select_dtypes()</code> method to select the categorical variables and the continuous variables. For our numerical variables, we will impute missing values with the respective mean for each column.</p>
-<div id="7371f17c" class="cell" data-execution_count="6">
+<div id="cec4d18d" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering for numeric columns:</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>numeric_columns <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'int'</span>, <span class="st">'float'</span>]).columns</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -630,7 +619,7 @@ Now we will proceed by separating the variables into categorical and continuous 
 </div>
 <p><br>
 For our categorical variables, we have decided to fill the missing values with just an <code>Unknown</code> category, since this allows us to keep the rows with missing values without losing too much information so that we can continue with plotting later on.</p>
-<div id="9716e1b9" class="cell" data-execution_count="7">
+<div id="896773ef" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering for Categorical columns:</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>categorical_columns <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>]).columns</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Imputing missing values with the value 'Unknown' for each respective column/variable:</span></span>
@@ -735,7 +724,6 @@ For our categorical variables, we have decided to fill the missing values with j
 Now we have finished our early data cleaning process and are ready to explore relations in our EDA process. &gt;&gt;&gt;&gt;&gt;&gt;&gt; 4f66144f6d344353bbf188acbb4f487803d24698</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
