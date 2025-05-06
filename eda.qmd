@@ -16,6 +16,7 @@ df.head()
 ```
 
 ```{python, echo=FALSE}
+#| echo: false
 # Filtering for numeric columns:
 numeric_columns = df.select_dtypes(include=['int', 'float']).columns
 # imputing missing values with the mean for each respective column
@@ -23,7 +24,7 @@ mean_values = df[numeric_columns].mean()
 m_df = df.fillna(mean_values)
 ```
 
-### Pairplot of our chosen variables
+## Pairplot of our chosen variables
 
 ```{python, echo=FALSE}
 # Pairplot of filtered variables:
@@ -33,13 +34,13 @@ plt.show()
 ```
 This pairplot illustrates the relationship between each pair of variables in our dataset. This is a quick and straightforward tool to see if there are any obvious correlations/clusters between different elements. We can see that BMI and mass have the most postively correlated relationship, which is to be expected (since mass is used to calculate BMI). Other than that, there are no glaringly obvious trends between variables. 
 
-**Looking at Specific Distributions**
-```{python, echo=FALSE}
-# Creating visualizations to illustrate distributions:
-# SCATTERPLOT: Between height and mass_kg
+## Looking at Specific Distributions
+
+```{python}
+# Scatterplot of height v mass
 plt.figure(figsize=(10,6))
 sns.scatterplot(x='height_m', y='mass_kg', data=df)
-# == SCAFFOLDING == 
+
 plt.suptitle('Scatterplot of Height and Mass', weight = 'bold', fontsize = 16, x = 0.29)
 # axis labels:
 plt.xlabel('Height (m)', weight = 'bold')
@@ -52,11 +53,11 @@ plt.show()
 ```
 This is a scatterplot that plots the distribution of height v mass between all the patients. There is a pretty positive correlation between the two variables, since as height increases, mass also tends to increase. There is one outlier where height is around 3.25 meters, or around 10 feet. This is most likely a typo and they intended to mark it as 1.25. 
 
-```{python, echo=FALSE}
-# Histogram for 'age':
+```{python}
+# Histogram for 'age'
 plt.figure(figsize=(10,6))
 df['age'].plot(kind='hist')
-# == SCAFFOLDING == 
+
 plt.suptitle('Histogram of Age', weight = 'bold', fontsize=16, x=0.20)
 plt.title('Distribution of age values', fontsize=10, x=0.075)
 plt.subplots_adjust(top = 0.91) 
@@ -69,11 +70,9 @@ plt.gca().spines['right'].set_visible(False)
 plt.gca().spines['left'].set_visible(False)
 plt.show()
 ```
-This is 
+This is a histogram of the ages of all the patients in the study. As we can see there is a right tail skew; most participants are between the ages of 15-20. This makes sense since this study was likely done with many student athletes. There are a couple of older patients in their 50s and 60s, so it could be interesting to see how recovery is affected by age. 
 
-**6.  Examine Correlations (if relevant)**
-
-Interpret findings: What variables appear related?
+## Examine Correlations 
 
 ```{python}
 # setting filtered_df to be the relevant columns:
@@ -89,29 +88,21 @@ sns.heatmap(corr_matrix, fmt=".1f", annot=True, cmap="coolwarm", center=0)
 plt.title("Cleaned Dataframe: Correlation Heatmap",weight = 'bold', fontsize = 18, x=0.21)
 plt.show()
 ```
-
-Positively correlated variables seem to include:
-- ikdc and acl_rsi
-- bmi and mass_kg
+What variables appear related? The most positively correlated variables are between bmi and mass. This supports our earlier scatterplot that showed a positive trend between height and mass as well, which is great. Something interesting is there is a relatively positive relationship between ikdc and acl_rsi. This is also to be expected because both are patient reported - ikdc is a measure of knee function, while acl_rsi is the return-to-sport-after-injury score. 
 
 
-**7. Explore Relationships (if relevant)**
-
-Dig into potential causal or descriptive relationships 
-Use visualizations and statistical summaries.
+## Looking into Reinjury Type and Graft Type
 
 ```{python}
 # Records were mismatched so we shifted row values by 1 
-# (for every graft_type recorded, reinjury was blank so shifted by 1 to match)
 df['reinjury_shifted'] = df['reinjury'].shift(-1)
 df_cleaned = df[df['graft_dashboard2'].notna()][['graft_dashboard2', 'reinjury_shifted']]
 df_cleaned.columns = ['graft_dashboard2', 'reinjury']
-print(df_cleaned.head()) # previewing cleaned dataset
+# print(df_cleaned.head()) # previewing cleaned dataset
 
 df_cleaned = df_cleaned[
     (df_cleaned['reinjury'].str.upper() != 'BLANK') &
     (df_cleaned['graft_dashboard2'].str.upper() != 'BLANK')]
-
 
 grouped_counts = (
     df_cleaned.groupby(['graft_dashboard2', 'reinjury'])
@@ -119,18 +110,7 @@ grouped_counts = (
     .reset_index(name='count')
 )
 
-# #graft_order = ['HS allograft', 'BTB allograft', 'QT autograft', 'Allograft', 'Other']
-# # Convert 'graft_dashboard2' to a categorical type w order
-# #grouped_counts['graft_dashboard2'] = pd.Categorical(
-#     grouped_counts['graft_dashboard2'],
-#     categories=graft_order,
-#     ordered=True
-# )
-# sort the DataFrame by this order for plotting
-#grouped_counts = grouped_counts.sort_values('graft_dashboard2')
-
-
-# plotting stacked bar chart:
+# plotting grouped bar chart:
 plt.figure(figsize=(10, 6))
 sns.barplot(
     data=grouped_counts,
@@ -139,7 +119,7 @@ sns.barplot(
     hue='reinjury',
     palette='Set2'
 )
-# == SCAFFOLDING == 
+
 plt.xlabel('Graft Type')
 plt.ylabel('Count', weight = 'bold')
 plt.title('Reinjury Types by Graft Type', weight = 'bold', fontsize = 16, x = 0.2)
@@ -152,7 +132,7 @@ plt.gca().spines['left'].set_visible(False)
 plt.tight_layout()
 plt.show()
 ```
-
+We were curious if there was any relationship between reinjury types across different graft types, so we made this grouped barplot. It seems that HS autograft has the highest proportion of no reinjuries, while the BTB autograft seems to have the highest recorded count of contralateral reinjuries. This is a super interesting visualization, so we decided to include this relationship in our data visualizations, along with some other characteristics on the next page!
 HS Autograft has the highest proportion of no reinjuries, while the BTB autograft seems to have the highest recorded count of Contralateral reinjuries.
 
 
