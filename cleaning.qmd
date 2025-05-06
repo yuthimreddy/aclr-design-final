@@ -1,26 +1,71 @@
-## Data Cleaning
+## Data Cleaning Outline:
+***Documentation for our data cleaning process, including decisions regarding how we handle missing values, outliers, and other data quality issues.***
 
-#### **Choosing our Variables:**
+First, we import the necessary libraries and set the dataset which is a .csv file provided by the UVA School of Data Science and the UVA Department of Kinesiology as a pandas dataframe.
 
-With the given dataset, we decided to focus on the variables we deemed to be most relevant to our hypothesis regarding recovery
-trends. Categorical variables such as `sex_dashboard`, `graft_dashboard2`, `reinjury`, and `tss_dashboard` were inlcuded along with 
-numerical values such as `age`, `ikdc`, `acl_rsi`, and `bmi`. 
+```{python, echo=FALSE}
+# Setting up our environment, importing all necessary libraries:
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-Our categorical variables provide key insight into grouping individuals and focusing on patterns relevant to them, as well as stratifying
-their respective outcomes. For example, `sex_dashboard` allowed us to explore sex-based differences in recovery. Both `graft_dashboard2` and `reinjury`
-helped us determine whether certain graft types experience reinjury more frequent with `tss_dashboard` establishing the time frame as to when
-individuals experienced their reinjury.
+# Importing dataset as dataframe:
+df = pd.read_csv('aclr data(in).csv')
+```
 
-The numerical variables chosen are all continuous measures of both physical and psychological recovery factors that are key to affirming and
-establishing key numerical general descriptive statistics that provide a measure of evaluating outcome differences.
+```{python, echo=FALSE}
+# Previewing the dataframe:
+df.head()
+```
 
-#### **Cleaning Approach:**
+```{python, echo=FALSE}
+# Checking the dimensions of the dataframe:
+print(df.shape)
+```
 
-During our analysis, we took measures to address missing values, inconsistent data types, and outliers. For 
+The original dataframe has 11150 observations and 63 columns. We will be focusing on the variables we feel are most relevant to our hypothesis. We will be using the columns: `sex_dashboard`, `graft_dashboard2`, `reinjury`, `age`, `height_m`, `mass_kg`, `bmi`, `ikdc`, `acl_rsi` and dropping the rest from the dataframe.
 
-For each variable, we assessed the proportion of missing values respective to the amount of osbservations. For our numerical columns, we decided to 
-impute the missing values with the median, and for our categorical values decided to drop records entirely so that we could plot points accordingly 
-when constructing our graphs and visualizations. 
+```{python, echo=FALSE}
+df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi', 'tss_dashboard']]
+df.head()
+```
 
-After completing our intial cleaning process, we went ahead with our next step, Exploratory Data Analysis (EDA), to examine any relations and patterns within 
-our dataset.
+\
+Now that we have our columns of interest, we will first check for missing values across the dataset. We will use the `isnull()` method to check for missing values and the `sum()` method to get the total number of missing values in each column, as well as the percentage of missing values in each column. 
+```{python, echo=FALSE}
+# Checking for missing values:
+missing_values = df.isnull().sum()
+
+# Checking the percentage of missing values:
+missing_percentage = (missing_values / len(df)) * 100
+# Displaying missing values and their percentage:
+missing_values = pd.DataFrame({'Missing Values': missing_values, 'Percentage': missing_percentage})
+
+# Displaying the missing values:
+print(missing_values)
+```
+
+\
+Now we will proceed by separating the variables into categorical and continuous variables. We will use the `select_dtypes()` method to select the categorical variables and the continuous variables. For our numerical variables, we will impute missing values with the respective mean for each column.
+```{python, echo=FALSE}
+# Filtering for numeric columns:
+numeric_columns = df.select_dtypes(include=['int', 'float']).columns
+
+# Imputing missing values with the mean for each respective column/varibale:
+mean_values = df[numeric_columns].mean()
+m_df = df.fillna(mean_values)
+
+# Displaying the first 5 rows of the modified dataframe:
+(m_df.head(5))
+```
+
+\
+For our categorical variables, we have decided to drop the rows with missing values entirely as imputing values here would skew the data and not be representative of the sampled population. We will drop the rows with missing values using the `dropna()` method.
+```{python, echo=FALSE}
+df_clean = m_df.dropna()
+df_clean.head()
+```
+
+\
+Now we have finished our early data cleaning process and are ready to explore relations in our EDA process.
