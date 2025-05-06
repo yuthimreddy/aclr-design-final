@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Data Cleaning
 
 #### **Choosing our Variables:**
@@ -24,3 +25,82 @@ when constructing our graphs and visualizations.
 
 After completing our intial cleaning process, we went ahead with our next step, Exploratory Data Analysis (EDA), to examine any relations and patterns within 
 our dataset.
+=======
+## Data Cleaning Outline:
+***Documentation for our data cleaning process, including decisions regarding how we handle missing values, outliers, and other data quality issues.***
+
+First, we import the necessary libraries and set the dataset which is a .csv file provided by the UVA School of Data Science and the UVA Department of Kinesiology as a pandas dataframe.
+
+```{python, echo=FALSE}
+# Setting up our environment, importing all necessary libraries:
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Importing dataset as dataframe:
+df = pd.read_csv('aclr data(in).csv')
+```
+
+```{python, echo=FALSE}
+# Previewing the dataframe:
+df.head()
+```
+
+```{python, echo=FALSE}
+# Checking the dimensions of the dataframe:
+print(df.shape)
+```
+
+The original dataframe has 11150 observations and 63 columns. We will be focusing on the variables we feel are most relevant to our hypothesis. We will be using the columns: `sex_dashboard`, `graft_dashboard2`, `reinjury`, `age`, `height_m`, `mass_kg`, `bmi`, `ikdc`, `acl_rsi` and dropping the rest from the dataframe.
+
+```{python, echo=FALSE}
+df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi', 'tss_dashboard']]
+df.head()
+```
+
+\
+Now that we have our columns of interest, we will first check for missing values across the dataset. We will use the `isnull()` method to check for missing values and the `sum()` method to get the total number of missing values in each column, as well as the percentage of missing values in each column. 
+```{python, echo=FALSE}
+# Checking for missing values:
+missing_values = df.isnull().sum()
+
+# Checking the percentage of missing values:
+missing_percentage = (missing_values / len(df)) * 100
+# Displaying missing values and their percentage:
+missing_values = pd.DataFrame({'Missing Values': missing_values, 'Percentage': missing_percentage})
+
+# Displaying the missing values:
+print(missing_values)
+```
+
+\
+Now we will proceed by separating the variables into categorical and continuous variables. We will use the `select_dtypes()` method to select the categorical variables and the continuous variables. For our numerical variables, we will impute missing values with the respective mean for each column.
+```{python, echo=FALSE}
+# Filtering for numeric columns:
+numeric_columns = df.select_dtypes(include=['int', 'float']).columns
+
+# Imputing missing values with the mean for each respective column/varibale:
+mean_values = df[numeric_columns].mean()
+m_df = df.fillna(mean_values)
+
+# Displaying the first 5 rows of the modified dataframe:
+(m_df.head(5))
+```
+
+\
+For our categorical variables, we have decided to fill the missing values with just an `Unknown` category, since this allows us to keep the rows with missing values without losing too much information so that we can continue with plotting later on.
+```{python, echo=FALSE}
+# Filtering for Categorical columns:
+categorical_columns = df.select_dtypes(include=['object']).columns
+# Imputing missing values with the value 'Unknown' for each respective column/variable:
+for column in categorical_columns:
+    m_df[column] = m_df[column].fillna('Unknown')
+
+# Displaying the first 5 rows of the modified dataframe:
+(m_df.head(5))
+```
+
+\
+Now we have finished our early data cleaning process and are ready to explore relations in our EDA process.
+>>>>>>> 4f66144f6d344353bbf188acbb4f487803d24698
