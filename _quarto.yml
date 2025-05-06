@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "ACLR Final Project"
+  title: "“Factors Which Affect Reinjury Rates Among ACLR Individuals”"
   author: "Rachel Seo, Elaine Liu, and Yuthi Madireddy"
   favicon: ds-l.png
   description: "DS 2023 Final Report"
