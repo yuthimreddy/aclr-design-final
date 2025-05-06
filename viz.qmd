@@ -1,5 +1,7 @@
 ## Data Visualization
 
+To make this complex data a little more understandable, we created a couple of data visualizations. With these visualizations, we aim to communicate our findings easier and help stakeholders in their decision making process. 
+
 ```{python}
 #| echo: false
 # Environment Setup:
