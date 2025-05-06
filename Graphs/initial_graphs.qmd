@@ -48,128 +48,12 @@ df['sex_dashboard'] = df['sex_dashboard'].shift(-1)
 
 ```{python}
 # == PLOT PREPARATION ==
-
-# data for graphing (getting rid of NaN values):
-df_clean = df[['ikdc', 'acl_rsi', 'sex_dashboard', 'tss_dashboard']].dropna()
-
-# Filter by sex
-df_male = df_clean[df_clean['sex_dashboard'] == 'Male']
-df_female = df_clean[df_clean['sex_dashboard'] == 'Female']
-
-# == PLOT ==
-
-# setting plot size:
-plt.figure(figsize=(10, 6))
-# male graph:
-plt.scatter(df_male['ikdc'], df_male['acl_rsi'], 
-            marker='x', label='Male', color='#0070BB', alpha=0.7, s=40)
-# Plot females with square markers
-plt.scatter(df_female['ikdc'], df_female['acl_rsi'], 
-            marker='o', label='Female', color='#F653A6', alpha=0.5, s=40)
-
-
-
-# == SCAFFOLDING == 
-
-# setting titles:
-plt.suptitle('Physical and Mental Recovery Go Hand in Hand', weight = 'bold', fontsize = 16, x = 0.39)
-plt.title('Physical gains mirror mental gains in ACL Recovery Journey', color='#585757', fontsize = 12, x = 0.28)
-plt.subplots_adjust(top = 0.905) # adjusting spacing between sub and main title
-
-
-# setting x-axis and y-axis labels:
-plt.xlabel('IKDC (Knee Function)', weight = 'bold', fontsize = 12)
-plt.ylabel('ACL_RSI (Mental Readiness)', weight = 'bold', fontsize = 12)
-
-# reducing clutter on the end of the x-axis:
-plt.xticks(fontsize=10)
-plt.yticks(fontsize=10)
-plt.locator_params(axis='x', nbins=8)  # reduces x-axis ticks
-
-# extra formatting (removing spines for cleaner look):
-plt.gca().spines['top'].set_visible(False)
-plt.gca().spines['right'].set_visible(False)
-plt.gca().spines['left'].set_visible(False)
-
-
-# adding source as annotation:
-plt.figtext(0.1, -0.05, 'Source: UVA Department of Kinesiology and School of Data Science', ha='left', fontsize=10)
-
-
-plt.show()
-```
-
-**Graph 2:**
-
-Planning on creating a scatterplot showing how both physical and mental readiness affect each other and the individual's overall confidence in returning to play.
-
-```{python}
-# setting font
-georgia_font = font_manager.FontProperties(family='Georgia')
-plt.rcParams['font.family'] = georgia_font.get_name()
-
-df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi']]
-df = df[df['reinjury'].str.upper() != 'BLANK'] #get rid of all blank in reinjury
-
-prop_noreinjury = df['reinjury'].value_counts(normalize=True).get('No', 0) #get proportion of no reinjury
-print(f"Proportion of patients with no reinjury: {prop_noreinjury:.2%}") #print proportion
-
-df['reinjury_shifted'] = df['reinjury'].shift(-1) #align reinjury with other values
-df_cleaned = df[df['graft_dashboard2'].notna()][['graft_dashboard2', 'reinjury_shifted']] #get rid of na
-df_cleaned.columns = ['graft_dashboard2', 'reinjury'] #rename
-
-counts = ( #get counts of graft and reinjury
-    df_cleaned.groupby(['graft_dashboard2', 'reinjury'])
-    .size()
-    .reset_index(name='count')
-)
-
-graft_order = ['Allograft', 'QT autograft', 'HS autograft', 'BTB autograft', 'Other'] #order
-counts['graft_dashboard2'] = pd.Categorical( #set order in counts
-    counts['graft_dashboard2'],
-    categories=graft_order,
-    ordered=True
-)
-total_per_graft = counts.groupby('graft_dashboard2')['count'].transform('sum') #get sums
-counts['proportion'] = counts['count'] / total_per_graft #calculate proportions
-#show proportions
-print(counts)
-print('No reinjury proportions by Graft type:\n' +
-'Allograft: 0.83\n' +
-'BTB autograft: 0.89\n' +
-'HS autograft: 0.92\n' +
-'QT autograft: 0.87\n' +   
-'Other: 0.84\n')
-
-counts_noreinjury = counts[counts['reinjury'] != 'No'] #get rid of no reinjury bar
-plt.figure(figsize=(10, 6))
-sns.barplot( #make grouped barplot
-    data=counts_noreinjury,
-    x='graft_dashboard2',
-    y='proportion',
-    hue='reinjury',
-    palette='mako'
-)
-plt.xlabel('Graft Type')
-plt.ylabel('Proportion of Reinjury Type')
-plt.title('Undergoing ACLR Surgery? Consider a Hamstring (HS) Tendon Autograft', fontsize=14, weight='bold', loc='left')  # Main title
-plt.text(0.01, 0.98, 'Comparing Proportions of Reinjury Types Across Different Graft Types', 
-         ha='left', va='center', transform=plt.gca().transAxes, fontsize=10, color='gray')  # Subtitle
-plt.legend(title='Reinjury Type', loc='upper left', bbox_to_anchor=(0.775, 1.0))
-plt.text(-0.8, -0.02, 'Source: UVA Department of Kinesiology and School of Data Science', ha='left', fontsize=10)
-
-sns.despine(top=True, right=True, left=True) #get rid of axes
-plt.show()
-```
-
-**Graph 3**: Looking at the relationship between different reinjuries between the sexes.
-
-```{python}
-# small multiples bar chart
-
 # Set font family to Georgia
 georgia_font = font_manager.FontProperties(family='Georgia')
 plt.rcParams['font.family'] = georgia_font.get_name()
+
+# small multiples bar chart
+
 
 # Records were mismatched so we shifted row values by 1 
 # (for every graft_type recorded, reinjury was blank so shifted by 1 to match)
@@ -241,3 +125,117 @@ plt.text(-42, -0.8, 'Source: UVA Department of Kinesiology and School of Data Sc
 plt.show()
 ```
 
+**Graph 2:**
+
+Planning on creating a scatterplot showing how both physical and mental readiness affect each other and the individual's overall confidence in returning to play.
+
+```{python}
+# setting font
+georgia_font = font_manager.FontProperties(family='Georgia')
+plt.rcParams['font.family'] = georgia_font.get_name()
+
+df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi']]
+df = df[df['reinjury'].str.upper() != 'BLANK'] #get rid of all blank in reinjury
+
+prop_noreinjury = df['reinjury'].value_counts(normalize=True).get('No', 0) #get proportion of no reinjury
+print(f"Proportion of patients with no reinjury: {prop_noreinjury:.2%}") #print proportion
+
+df['reinjury_shifted'] = df['reinjury'].shift(-1) #align reinjury with other values
+df_cleaned = df[df['graft_dashboard2'].notna()][['graft_dashboard2', 'reinjury_shifted']] #get rid of na
+df_cleaned.columns = ['graft_dashboard2', 'reinjury'] #rename
+
+counts = ( #get counts of graft and reinjury
+    df_cleaned.groupby(['graft_dashboard2', 'reinjury'])
+    .size()
+    .reset_index(name='count')
+)
+
+graft_order = ['Allograft', 'QT autograft', 'HS autograft', 'BTB autograft', 'Other'] #order
+counts['graft_dashboard2'] = pd.Categorical( #set order in counts
+    counts['graft_dashboard2'],
+    categories=graft_order,
+    ordered=True
+)
+total_per_graft = counts.groupby('graft_dashboard2')['count'].transform('sum') #get sums
+counts['proportion'] = counts['count'] / total_per_graft #calculate proportions
+#show proportions
+print(counts)
+print('No reinjury proportions by Graft type:\n' +
+'Allograft: 0.83\n' +
+'BTB autograft: 0.89\n' +
+'HS autograft: 0.92\n' +
+'QT autograft: 0.87\n' +   
+'Other: 0.84\n')
+
+counts_noreinjury = counts[counts['reinjury'] != 'No'] #get rid of no reinjury bar
+plt.figure(figsize=(10, 6))
+sns.barplot( #make grouped barplot
+    data=counts_noreinjury,
+    x='graft_dashboard2',
+    y='proportion',
+    hue='reinjury',
+    palette='mako'
+)
+plt.xlabel('Graft Type')
+plt.ylabel('Proportion of Reinjury Type')
+plt.title('Undergoing ACLR Surgery? Consider a Hamstring (HS) Tendon Autograft', fontsize=14, weight='bold', loc='left')  # Main title
+plt.text(0.01, 0.98, 'Comparing Proportions of Reinjury Types Across Different Graft Types', 
+         ha='left', va='center', transform=plt.gca().transAxes, fontsize=10, color='gray')  # Subtitle
+plt.legend(title='Reinjury Type', loc='upper left', bbox_to_anchor=(0.775, 1.0))
+plt.text(-0.8, -0.02, 'Source: UVA Department of Kinesiology and School of Data Science', ha='left', fontsize=10)
+
+sns.despine(top=True, right=True, left=True) #get rid of axes
+plt.show()
+```
+
+**Graph 3**: Looking at the relationship between different reinjuries between the sexes.
+
+```{python}
+# == PLOT PREPARATION ==
+# Set font family to Georgia
+georgia_font = font_manager.FontProperties(family='Georgia')
+plt.rcParams['font.family'] = georgia_font.get_name()
+
+# data for graphing (getting rid of NaN values):
+df_clean = df[['ikdc', 'acl_rsi', 'sex_dashboard', 'tss_dashboard']].dropna()
+
+# Filter by sex
+df_male = df_clean[df_clean['sex_dashboard'] == 'Male']
+df_female = df_clean[df_clean['sex_dashboard'] == 'Female']
+
+# == PLOT ==
+
+# setting plot size:
+plt.figure(figsize=(10, 6))
+# male graph:
+plt.scatter(df_male['ikdc'], df_male['acl_rsi'], 
+            marker='x', label='Male', color='#0070BB', alpha=0.7, s=40)
+# Plot females with square markers
+plt.scatter(df_female['ikdc'], df_female['acl_rsi'], 
+            marker='o', label='Female', color='#F653A6', alpha=0.5, s=40)
+
+# == SCAFFOLDING == 
+
+# setting titles:
+plt.suptitle('Physical and Mental Recovery Go Hand in Hand', weight = 'bold', fontsize = 16, x = 0.39)
+plt.title('Physical gains mirror mental gains in ACL Recovery Journey', color='#585757', fontsize = 12, x = 0.28)
+plt.subplots_adjust(top = 0.905) # adjusting spacing between sub and main title
+
+# setting x-axis and y-axis labels:
+plt.xlabel('IKDC (Knee Function)', weight = 'bold', fontsize = 12)
+plt.ylabel('ACL_RSI (Mental Readiness)', weight = 'bold', fontsize = 12)
+
+# reducing clutter on the end of the x-axis:
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.locator_params(axis='x', nbins=8)  # reduces x-axis ticks
+
+# extra formatting (removing spines for cleaner look):
+plt.gca().spines['top'].set_visible(False)
+plt.gca().spines['right'].set_visible(False)
+plt.gca().spines['left'].set_visible(False)
+
+# adding source as annotation:
+plt.figtext(0.1, -0.05, 'Source: UVA Department of Kinesiology and School of Data Science', ha='left', fontsize=10)
+plt.show()
+```
