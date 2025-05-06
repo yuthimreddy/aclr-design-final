@@ -61,10 +61,16 @@ m_df = df.fillna(mean_values)
 ```
 
 \
-For our categorical variables, we have decided to drop the rows with missing values entirely as imputing values here would skew the data and not be representative of the sampled population. We will drop the rows with missing values using the `dropna()` method.
+For our categorical variables, we have decided to fill the missing values with just an `Unknown` category, since this allows us to keep the rows with missing values without losing too much information so that we can continue with plotting later on.
 ```{python, echo=FALSE}
-df_clean = m_df.dropna()
-df_clean.head()
+# Filtering for Categorical columns:
+categorical_columns = df.select_dtypes(include=['object']).columns
+# Imputing missing values with the value 'Unknown' for each respective column/variable:
+for column in categorical_columns:
+    m_df[column] = m_df[column].fillna('Unknown')
+
+# Displaying the first 5 rows of the modified dataframe:
+(m_df.head(5))
 ```
 
 \
