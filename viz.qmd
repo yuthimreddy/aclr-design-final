@@ -8,7 +8,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib 
 import seaborn as sns
-from matplotlib import font_manager
 ```
 
 ```{python, echo=FALSE}
@@ -43,6 +42,7 @@ Breaking down reinjuries by type among both sexes.
 ```{python, echo=FALSE}
 # small multiples bar chart
 
+from matplotlib import font_manager
 # Set font family to Georgia
 georgia_font = font_manager.FontProperties(family='Georgia')
 plt.rcParams['font.family'] = georgia_font.get_name()
