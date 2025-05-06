@@ -1,4 +1,4 @@
-## Data Cleaning Outline:
+## Data Cleaning Outline
 ***Documentation for our data cleaning process, including decisions regarding how we handle missing values, outliers, and other data quality issues.***
 
 First, we import the necessary libraries and set the dataset which is a .csv file provided by the UVA School of Data Science and the UVA Department of Kinesiology as a pandas dataframe.

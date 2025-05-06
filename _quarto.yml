@@ -5,15 +5,16 @@ project:
 book:
   title: "ACLR Final Project"
   author: "Rachel, Elaine, and Yuthi"
+  favicon: ds-l.png
   description: "DS 2023 Final Report"
   keyword: data science, communicating, storytelling, data visualization
-  url: "https://github.com/yuthimreddy/aclr-design-final#"
+  url: "https://yuthimreddy.github.io/aclr-design-final/"
   sidebar: 
-    logo: logo.png
+    logo: ds-l.png
     search: true
-  repo-url: ""
-  repo-branch: ""
-  image: logo.png
+  repo-url: "https://github.com/yuthimreddy/aclr-design-final"
+  repo-branch: "master"
+  image: ds-l.png
 
 
   chapters:

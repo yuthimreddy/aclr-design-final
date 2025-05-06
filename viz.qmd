@@ -157,7 +157,6 @@ plt.rcParams['font.family'] = georgia_font.get_name()
 m_df['reinjury_shifted'] = m_df['reinjury'].shift(-1)
 df2 = m_df[m_df['sex_dashboard'].notna()][['sex_dashboard', 'reinjury_shifted']]
 df2.columns = ['sex_dashboard', 'reinjury']
-# print(df2.head()) # previewing cleaned dataset
 
 df2 = df2[
     (df2['reinjury'].str.upper() != 'BLANK') &
@@ -167,7 +166,7 @@ df2 = df2[df2['reinjury'].str.upper() != 'NO'] # dropping 'no' reinjury records
 df2= df2[df2['reinjury'].str.upper() != 'BOTH'] # dropping 'both' reinjury records
 
 
-grouped_counts2 = (
+grouped_counts2 = ( # group by sex and reinjury 
     df2.groupby(['sex_dashboard', 'reinjury'])
     .size()
     .reset_index(name='count')
@@ -195,7 +194,7 @@ axs[0].spines['bottom'].set_visible(False)
 axs[0].tick_params(axis='x', length=0)
 axs[0].tick_params(axis='y', length=0)
 
-for bar in bars_contra:
+for bar in bars_contra: # adding labels to the ends of each bar
     xval = bar.get_width()
     axs[0].text(xval + 0.5, bar.get_y() + bar.get_height()/2,
                 round(xval), va='center', ha='left', fontsize=10)
@@ -211,7 +210,7 @@ axs[1].spines['bottom'].set_visible(False)
 axs[1].tick_params(axis='x', length=0)
 axs[1].tick_params(axis='y', length=0)
 
-for bar in bars_ipsi:
+for bar in bars_ipsi: # adding labels to the ends of each bar 
     xval = bar.get_width()
     axs[1].text(xval + 0.5, bar.get_y() + bar.get_height()/2,
                 round(xval), va='center', ha='left', fontsize=10)
