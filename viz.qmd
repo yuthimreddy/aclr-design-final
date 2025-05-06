@@ -121,6 +121,8 @@ Visualizing distribution of reinjuries as proportions to each respective graft t
 ```{python}
 #| warning: false
 
+plt.rcParams['font.family'] = georgia_font.get_name() # set font
+
 df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi']]
 # cleaning reinjury variable
 df = df[df['reinjury'].str.upper() != 'BLANK']
@@ -187,6 +189,9 @@ df_female = df_clean[df_clean['sex_dashboard'] == 'Female']
 ```
 ```{python}
 # == PLOT ==
+
+# set font
+plt.rcParams['font.family'] = georgia_font.get_name() 
 # setting plot size:
 plt.figure(figsize=(10, 6))
 # male graph:
