@@ -51,9 +51,9 @@ df['sex_dashboard'] = df['sex_dashboard'].shift(-1)
 # Set font family to Georgia
 georgia_font = font_manager.FontProperties(family='Georgia')
 plt.rcParams['font.family'] = georgia_font.get_name()
-
+```
+```{python}
 # small multiples bar chart
-
 
 # Records were mismatched so we shifted row values by 1 
 # (for every graft_type recorded, reinjury was blank so shifted by 1 to match)
