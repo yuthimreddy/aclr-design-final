@@ -1,4 +1,4 @@
-# Data Dictionary
+## Data Dictionary
 
 Here are the relevant variables we used to complete our analysis with their meanings. 
 

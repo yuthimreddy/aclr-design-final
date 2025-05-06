@@ -1,6 +1,6 @@
-# Exploratory Data Analysis
+## Exploratory Data Analysis
 
-Preview of the cleaned dataset (first five rows)
+Preview of the cleaned dataset: (first five rows)
 ```{python, echo=FALSE}
 #| echo: false
 # setting up environment
