@@ -1,6 +1,7 @@
 # Data Visualization
 
 ```{python}
+#| echo: false
 # Environment Setup:
 import pandas as pd
 import numpy as np
@@ -13,6 +14,7 @@ from matplotlib import font_manager
 ## Graph 1
 
 ```{python, echo=FALSE}
+#| echo: false
 # importing data as dataframe:
 df = pd.read_csv('aclr data(in).csv')
 
@@ -80,6 +82,7 @@ plt.show()
 
 
 ```{python}
+#| warning: false
 # setting font
 georgia_font = font_manager.FontProperties(family='Georgia')
 plt.rcParams['font.family'] = georgia_font.get_name()

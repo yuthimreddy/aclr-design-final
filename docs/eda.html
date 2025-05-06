@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Preview of the cleaned dataset (first five rows)</p>
-<div id="519ae28f" class="cell" data-execution_count="1">
+<div id="04051c66" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -332,11 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="pairplot-of-our-chosen-variables" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="pairplot-of-our-chosen-variables"><span class="header-section-number">2.1</span> Pairplot of our chosen variables</h2>
-<div id="1b22ff6a" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairplot of filtered variables:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(df[[<span class="st">'age'</span>, <span class="st">'height_m'</span>, <span class="st">'mass_kg'</span>, <span class="st">'bmi'</span>, <span class="st">'ikdc'</span>, <span class="st">'acl_rsi'</span>]], plot_kws<span class="op">=</span>{<span class="st">"s"</span>: <span class="dv">5</span>})</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Pairplot of Quantitative Variables'</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7779f69a" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -349,20 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="looking-at-specific-distributions" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="looking-at-specific-distributions"><span class="header-section-number">2.2</span> Looking at Specific Distributions</h2>
-<div id="d212074c" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of height v mass</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'height_m'</span>, y<span class="op">=</span><span class="st">'mass_kg'</span>, data<span class="op">=</span>df)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Scatterplot of Height and Mass'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>, fontsize <span class="op">=</span> <span class="dv">16</span>, x <span class="op">=</span> <span class="fl">0.29</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># axis labels:</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Height (m)'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Mass (kg)'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># removing spines</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b95cd6a2" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -372,22 +355,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This is a scatterplot that plots the distribution of height v mass between all the patients. There is a pretty positive correlation between the two variables, since as height increases, mass also tends to increase. There is one outlier where height is around 3.25 meters, or around 10 feet. This is most likely a typo and they intended to mark it as 1.25.</p>
-<div id="b55ec6e5" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram for 'age'</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'age'</span>].plot(kind<span class="op">=</span><span class="st">'hist'</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Histogram of Age'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>, x<span class="op">=</span><span class="fl">0.20</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of age values'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, x<span class="op">=</span><span class="fl">0.075</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(top <span class="op">=</span> <span class="fl">0.91</span>) </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># axis labels:</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># removing spines</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="95ed03f4" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram for 'age'</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'age'</span>].plot(kind<span class="op">=</span><span class="st">'hist'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Histogram of Age'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>, x<span class="op">=</span><span class="fl">0.20</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of age values'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, x<span class="op">=</span><span class="fl">0.075</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(top <span class="op">=</span> <span class="fl">0.91</span>) </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># axis labels:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># removing spines</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -400,19 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="examine-correlations" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="examine-correlations"><span class="header-section-number">2.3</span> Examine Correlations</h2>
-<div id="1cea220e" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setting filtered_df to be the relevant columns:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> df[[<span class="st">'sex_dashboard'</span>, <span class="st">'graft_dashboard2'</span>, <span class="st">'reinjury'</span>, <span class="st">'age'</span>, <span class="st">'height_m'</span>, <span class="st">'mass_kg'</span>, <span class="st">'bmi'</span>, <span class="st">'ikdc'</span>, <span class="st">'acl_rsi'</span>]]</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dropping categorical columns:</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>num_fil_df <span class="op">=</span> filtered_df.drop([<span class="st">'sex_dashboard'</span>, <span class="st">'graft_dashboard2'</span>, <span class="st">'reinjury'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># creating correlation matrix of our filtered numerical columns</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="op">=</span> num_fil_df.corr()</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting correlation heatmap:</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>sns.heatmap(corr_matrix, fmt<span class="op">=</span><span class="st">".1f"</span>, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"coolwarm"</span>, center<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Cleaned Dataframe: Correlation Heatmap"</span>,weight <span class="op">=</span> <span class="st">'bold'</span>, fontsize <span class="op">=</span> <span class="dv">18</span>, x<span class="op">=</span><span class="fl">0.21</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="20f0ba30" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -425,44 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="looking-into-reinjury-type-and-graft-type" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="looking-into-reinjury-type-and-graft-type"><span class="header-section-number">2.4</span> Looking into Reinjury Type and Graft Type</h2>
-<div id="74738e8e" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Records were mismatched so we shifted row values by 1 </span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'reinjury_shifted'</span>] <span class="op">=</span> df[<span class="st">'reinjury'</span>].shift(<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df_cleaned <span class="op">=</span> df[df[<span class="st">'graft_dashboard2'</span>].notna()][[<span class="st">'graft_dashboard2'</span>, <span class="st">'reinjury_shifted'</span>]]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df_cleaned.columns <span class="op">=</span> [<span class="st">'graft_dashboard2'</span>, <span class="st">'reinjury'</span>]</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_cleaned.head()) # previewing cleaned dataset</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df_cleaned <span class="op">=</span> df_cleaned[</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    (df_cleaned[<span class="st">'reinjury'</span>].<span class="bu">str</span>.upper() <span class="op">!=</span> <span class="st">'BLANK'</span>) <span class="op">&amp;</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    (df_cleaned[<span class="st">'graft_dashboard2'</span>].<span class="bu">str</span>.upper() <span class="op">!=</span> <span class="st">'BLANK'</span>)]</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>grouped_counts <span class="op">=</span> (</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    df_cleaned.groupby([<span class="st">'graft_dashboard2'</span>, <span class="st">'reinjury'</span>])</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    .size()</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    .reset_index(name<span class="op">=</span><span class="st">'count'</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting grouped bar chart:</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>sns.barplot(</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>grouped_counts,</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'graft_dashboard2'</span>,</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'count'</span>,</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">'reinjury'</span>,</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span><span class="st">'Set2'</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Graft Type'</span>)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Reinjury Types by Graft Type'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>, fontsize <span class="op">=</span> <span class="dv">16</span>, x <span class="op">=</span> <span class="fl">0.2</span>)</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Reinjury Type'</span>)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># removing spines</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>plt.gca().spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2219d915" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

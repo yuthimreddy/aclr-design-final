@@ -27,6 +27,7 @@ m_df = df.fillna(mean_values)
 ## Pairplot of our chosen variables
 
 ```{python, echo=FALSE}
+#| echo: false
 # Pairplot of filtered variables:
 sns.pairplot(df[['age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi']], plot_kws={"s": 5})
 plt.title('Pairplot of Quantitative Variables')
@@ -37,6 +38,7 @@ This pairplot illustrates the relationship between each pair of variables in our
 ## Looking at Specific Distributions
 
 ```{python}
+#| echo: false
 # Scatterplot of height v mass
 plt.figure(figsize=(10,6))
 sns.scatterplot(x='height_m', y='mass_kg', data=df)
@@ -75,6 +77,7 @@ This is a histogram of the ages of all the patients in the study. As we can see 
 ## Examine Correlations 
 
 ```{python}
+#| echo: false
 # setting filtered_df to be the relevant columns:
 filtered_df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi']]
 # dropping categorical columns:
@@ -94,6 +97,7 @@ What variables appear related? The most positively correlated variables are betw
 ## Looking into Reinjury Type and Graft Type
 
 ```{python}
+#| echo: false
 # Records were mismatched so we shifted row values by 1 
 df['reinjury_shifted'] = df['reinjury'].shift(-1)
 df_cleaned = df[df['graft_dashboard2'].notna()][['graft_dashboard2', 'reinjury_shifted']]
