@@ -10,6 +10,8 @@ import seaborn as sns
 from matplotlib import font_manager
 ```
 
+## Graph 1
+
 ```{python, echo=FALSE}
 # importing data as dataframe:
 df = pd.read_csv('aclr data(in).csv')
@@ -74,9 +76,8 @@ plt.figtext(0.1, -0.05, 'Source: UVA Department of Kinesiology and School of Dat
 plt.show()
 ```
 
-**Graph 2:**
+## Graph 2:
 
-Planning on creating a scatterplot showing how both physical and mental readiness affect each other and the individual's overall confidence in returning to play.
 
 ```{python}
 # setting font
@@ -84,22 +85,25 @@ georgia_font = font_manager.FontProperties(family='Georgia')
 plt.rcParams['font.family'] = georgia_font.get_name()
 
 df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi']]
-df = df[df['reinjury'].str.upper() != 'BLANK'] #get rid of all blank in reinjury
+# cleaning reinjury variable
+df = df[df['reinjury'].str.upper() != 'BLANK']
 
-prop_noreinjury = df['reinjury'].value_counts(normalize=True).get('No', 0) #get proportion of no reinjury
-print(f"Proportion of patients with no reinjury: {prop_noreinjury:.2%}") #print proportion
-
+#proportion of patients with no reinjury
+prop_noreinjury = df['reinjury'].value_counts(normalize=True).get('No', 0)
+print(f"Proportion of patients with no reinjury: {prop_noreinjury:.2%}")
+# cleaning dataframe
 df['reinjury_shifted'] = df['reinjury'].shift(-1) #align reinjury with other values
 df_cleaned = df[df['graft_dashboard2'].notna()][['graft_dashboard2', 'reinjury_shifted']] #get rid of na
-df_cleaned.columns = ['graft_dashboard2', 'reinjury'] #rename
+df_cleaned.columns = ['graft_dashboard2', 'reinjury'] 
 
-counts = ( #get counts of graft and reinjury
+#get counts of graft and reinjury
+counts = ( 
     df_cleaned.groupby(['graft_dashboard2', 'reinjury'])
     .size()
     .reset_index(name='count')
 )
-
-graft_order = ['Allograft', 'QT autograft', 'HS autograft', 'BTB autograft', 'Other'] #order
+#order of grafts
+graft_order = ['Allograft', 'QT autograft', 'HS autograft', 'BTB autograft', 'Other']
 counts['graft_dashboard2'] = pd.Categorical( #set order in counts
     counts['graft_dashboard2'],
     categories=graft_order,
@@ -107,24 +111,22 @@ counts['graft_dashboard2'] = pd.Categorical( #set order in counts
 )
 total_per_graft = counts.groupby('graft_dashboard2')['count'].transform('sum') #get sums
 counts['proportion'] = counts['count'] / total_per_graft #calculate proportions
-#show proportions
-print(counts)
-print('No reinjury proportions by Graft type:\n' +
-'Allograft: 0.83\n' +
-'BTB autograft: 0.89\n' +
-'HS autograft: 0.92\n' +
-'QT autograft: 0.87\n' +   
-'Other: 0.84\n')
+# print(counts)
+# print('No reinjury proportions by Graft type:\nAllograft: 0.83\nBTB autograft: 0.89\nHS autograft: 0.92\nQT autograft: 0.87\nOther: 0.84\n')
 
-counts_noreinjury = counts[counts['reinjury'] != 'No'] #get rid of no reinjury bar
+#get rid of no reinjury bar for readability
+counts_noreinjury = counts[counts['reinjury'] != 'No'] 
+#make grouped barplot
 plt.figure(figsize=(10, 6))
-sns.barplot( #make grouped barplot
+sns.barplot( 
     data=counts_noreinjury,
     x='graft_dashboard2',
     y='proportion',
     hue='reinjury',
     palette='mako'
 )
+
+# graph labels and scaffolding
 plt.xlabel('Graft Type')
 plt.ylabel('Proportion of Reinjury Type')
 plt.title('Undergoing ACLR Surgery? Consider a Hamstring (HS) Tendon Autograft', fontsize=14, weight='bold', loc='left')  # Main title
@@ -132,12 +134,13 @@ plt.text(0.01, 0.98, 'Comparing Proportions of Reinjury Types Across Different G
          ha='left', va='center', transform=plt.gca().transAxes, fontsize=10, color='gray')  # Subtitle
 plt.legend(title='Reinjury Type', loc='upper left', bbox_to_anchor=(0.775, 1.0))
 plt.text(-0.8, -0.02, 'Source: UVA Department of Kinesiology and School of Data Science', ha='left', fontsize=10)
-
 sns.despine(top=True, right=True, left=True) #get rid of axes
 plt.show()
 ```
 
-**Graph 3**: Looking at the relationship between different reinjuries between the sexes.
+## Graph 3: 
+
+Looking at the relationship between different reinjuries between the sexes.
 
 ```{python}
 # small multiples bar chart
