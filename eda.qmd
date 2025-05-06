@@ -1,6 +1,7 @@
 ## Exploratory Data Analysis
 
-Preview of the cleaned dataset: (first five rows)
+We performed EDA to get a better understanding of the data and get a general sense of the trends/patterns. This will help us begin to gain deeper insights and inform us to make data visualizations.
+
 ```{python, echo=FALSE}
 #| echo: false
 # setting up environment
@@ -12,7 +13,7 @@ import matplotlib.pyplot as plt
 df = pd.read_csv('aclr data(in).csv')
 # Including relevant variables into our dataframe and dropping the others:
 df = df[['sex_dashboard', 'graft_dashboard2', 'reinjury', 'age', 'height_m', 'mass_kg', 'bmi', 'ikdc', 'acl_rsi', 'tegner_pre', 'tegner_now', 'lsi_ext_isok_60', 'lsi_flex_isok_60']]
-df.head()
+# df.head()
 ```
 
 ```{python, echo=FALSE}
@@ -136,7 +137,6 @@ plt.gca().spines['left'].set_visible(False)
 plt.tight_layout()
 plt.show()
 ```
-We were curious if there was any relationship between reinjury types across different graft types, so we made this grouped barplot. It seems that HS autograft has the highest proportion of no reinjuries, while the BTB autograft seems to have the highest recorded count of contralateral reinjuries. This is a super interesting visualization, so we decided to include this relationship in our data visualizations, along with some other characteristics on the next page!
-HS Autograft has the highest proportion of no reinjuries, while the BTB autograft seems to have the highest recorded count of Contralateral reinjuries.
+We were curious if there was any relationship between reinjury types across different graft types, so we made this grouped barplot. It seems that HS autograft has the highest proportion of no reinjuries, while the BTB autograft seems to have the highest recorded count of contralateral reinjuries. We decided not to include error bars because some of the groups have very few patients, which could make the variation look misleading. This is a super interesting visualization, so we decided to include this relationship in our data visualizations, along with some other characteristics on the next page!
 
 
